@@ -19,9 +19,7 @@
 
 ---
 
-## 👤 PERSONA 1: Análisis Exploratorio y Preparación de Datos (Albert)
-
-### **Tiempo de exposición:** 5-7 minutos
+## 👤 Albert: Análisis Exploratorio y Preparación de Datos
 
 ### **Tarea 1.1: Carga e Inspección Inicial**
 **Qué hacer:**
@@ -96,9 +94,7 @@
 
 ---
 
-## 👤 PERSONA 2: Modelos Clásicos de Clasificación y Optimización (Robert)
-
-### **Tiempo de exposición:** 5-7 minutos
+## 👤 Robert: Modelos Clásicos de Clasificación y Optimización
 
 ### **Tarea 2.1: Regresión Logística (Baseline)**
 **Qué hacer:**
@@ -187,9 +183,7 @@
 
 ---
 
-## 👤 PERSONA 3: Modelos Avanzados (Ensembles y Comparativa Final) (Linda)
-
-### **Tiempo de exposición:** 6-8 minutos
+## 👤 Linda: Modelos Avanzados (Ensembles y Comparativa Final)
 
 ### **Tarea 3.1: Random Forest y Gradient Boosting**
 **Qué hacer:**
@@ -328,49 +322,49 @@
 
 ---
 
-## 📊 RESUMEN DE VISUALIZACIONES (máximo 9 en total)
+## 📊 RESUMEN DE GRÁFICAS POR PERSONA
 
-### Persona 1 (3-4 gráficas):
+### Albert (3-4 gráficas):
 1. Distribución de variable objetivo (desbalance de clases)
 2. Heatmap de correlación
 3. Tiempo hospitalizado vs readmisión
 4. Tasa de readmisión por edad/raza
 
-### Persona 2 (2-3 gráficas):
+### Robert (2-3 gráficas):
 1. Matriz de confusión (regresión logística)
 2. Importancia de features (regresión logística o árbol)
 3. Curvas de aprendizaje (overfitting en árbol)
 
-### Persona 3 (2-3 gráficas):
+### Linda (2-3 gráficas):
 1. Comparación Bagging vs Boosting (diagrama conceptual)
 2. Importancia de features (Random Forest)
 3. Tabla/gráfica comparativa final de todos los modelos
 
 ---
 
-## 🎯 ESTRUCTURA SUGERIDA DE LA PRESENTACIÓN (20 min)
+## 🎯 (BORRADOR) ESTRUCTURA SUGERIDA DE LA PRESENTACIÓN
 
-1. **Introducción** (2 min) - Persona 1
+1. **Introducción** - Albert
    - Contexto del problema
    - Importancia clínica y económica
    - Objetivo del proyecto
 
-2. **Exploración y preparación** (5 min) - Persona 1
+2. **Exploración y preparación** - Albert
    - Estructura del dataset
    - Limpieza y transformaciones
    - Insights principales del EDA
 
-3. **Modelos clásicos** (5 min) - Persona 2
+3. **Modelos clásicos** - Robert
    - Regresión logística (baseline)
    - Árboles de decisión y overfitting
    - Validación cruzada y optimización
 
-4. **Modelos avanzados** (6 min) - Persona 3
+4. **Modelos avanzados** - Linda
    - Random Forest y Gradient Boosting
    - Modelos alternativos
    - Comparativa completa
 
-5. **Conclusiones y recomendaciones** (2 min) - Persona 3
+5. **Conclusiones y recomendaciones** - Linda
    - Modelo final seleccionado
    - Justificación de negocio
    - Próximos pasos
