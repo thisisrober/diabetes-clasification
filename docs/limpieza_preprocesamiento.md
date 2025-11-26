@@ -25,11 +25,13 @@
 Este documento describe el proceso completo de limpieza y preprocesamiento del dataset de pacientes diabéticos. El objetivo es preparar los datos para entrenar modelos de machine learning que predigan la readmisión hospitalaria.
 
 ### Dimensiones del Dataset
+### Dimensiones del Dataset
 - **Original:** 101,766 registros × 50 columnas
-- **Final:** 101,766 registros × ~60 columnas (después de encoding y feature engineering)
+- **Final:** 101,766 registros × ~70 columnas (después de encoding y feature engineering — incluye flags derivados de los códigos ICD‑9)
 
 ### Cambios Principales
-- ✅ Eliminación de columna `weight` (97% de valores faltantes)
+ ✅ Feature Engineering (3 nuevas características)
+✅ Decodificación ICD-9 y creación de flags binarios (diabetes, circulatory, respiratory) y `comorbidity_score`
 - ✅ Imputación de valores faltantes en `race` con la moda
 - ✅ Sustitución de valores `?` por `Unknown` en `payer_code` y `medical_specialty`
 - ✅ Creación de variables objetivo binarias
@@ -358,6 +360,42 @@ df_encoded['procedures_per_day'] = df_encoded['num_procedures'] / (df_encoded['t
 
 ---
 
+### 5.4 Decodificación ICD-9 y flags de comorbilidad
+
+Se implementó una decodificación "inteligente" de los códigos ICD‑9 presentes en `diag_1`, `diag_2` y `diag_3` para crear variables binarias más interpretables. En lugar de usar los códigos crudos, creamos flags clínicos y un score agregado:
+
+- Reglas principales (prefijo numérico antes del punto decimal):
+  - Diabetes: prefijo 250 (ej. `250.01` → diabetes)
+  - Problemas circulatorios: rangos 390–459 y 785
+  - Problemas respiratorios: rangos 460–519 y 786
+
+- Flags generados por cada `diag_i`:
+  - `diag_i_is_diabetes`, `diag_i_is_circulatory`, `diag_i_is_respiratory` (0/1)
+
+- Flags agregados por paciente:
+  - `diabetes_primary`: 1 si `diag_1` es diabetes
+  - `diabetes_secondary`: 1 si aparece diabetes en `diag_2` o `diag_3` pero no en `diag_1`
+  - `diabetes_any`, `circulatory_any`, `respiratory_any`: 1 si la condición aparece en cualquiera de los 3 diagnósticos
+
+- `comorbidity_score`: cuenta cuántos de los tres grupos mayores están presentes (valor en 0–3)
+
+Observaciones (valores obtenidos al ejecutar el notebook):
+
+- `diabetes_any`: 38,024 registros
+- `diabetes_primary`: 8,757 registros
+- `diabetes_secondary`: 29,267 registros
+- `circulatory_any`: 59,313 registros
+- `respiratory_any`: 26,870 registros
+- Distribución `comorbidity_score`:
+  - 0: 15,385 (≈15.12%)
+  - 1: 51,438 (≈50.55%)
+  - 2: 32,060 (≈31.50%)
+  - 3: 2,883  (≈2.83%)
+
+Estas features mejoran la interpretabilidad y son recomendables como inputs en modelos interpretables (Regresión Logística) y como features informativas para modelos complejos (RandomForest, XGBoost, redes neuronales).
+
+---
+
 ## 6. Normalización
 
 ### 6.1 StandardScaler para Variables Numéricas
@@ -423,6 +461,13 @@ df_encoded.to_csv("data/diabetes_clean.csv", index=False)
   - `total_visits`
   - `medication_changes`
   - `procedures_per_day`
+- **ICD-9 / Comorbilidades:**
+  - `diag_1_is_diabetes`, `diag_2_is_diabetes`, `diag_3_is_diabetes`
+  - `diag_1_is_circulatory`, `diag_2_is_circulatory`, `diag_3_is_circulatory`
+  - `diag_1_is_respiratory`, `diag_2_is_respiratory`, `diag_3_is_respiratory`
+  - `diabetes_primary`, `diabetes_secondary`, `diabetes_any`
+  - `circulatory_any`, `respiratory_any`
+  - `comorbidity_score` (0-3)
 - **One-Hot Encoding:**
   - `admission_type_id_*` (múltiples columnas binarias)
   - `discharge_disposition_id_*`
