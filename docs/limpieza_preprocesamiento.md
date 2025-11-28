@@ -25,13 +25,13 @@
 Este documento describe el proceso completo de limpieza y preprocesamiento del dataset de pacientes diabéticos. El objetivo es preparar los datos para entrenar modelos de machine learning que predigan la readmisión hospitalaria.
 
 ### Dimensiones del Dataset
-### Dimensiones del Dataset
+
 - **Original:** 101,766 registros × 50 columnas
-- **Final:** 101,766 registros × ~70 columnas (después de encoding y feature engineering — incluye flags derivados de los códigos ICD‑9)
+- **Final:** 101,766 registros × ~60 columnas (después de encoding y feature engineering — incluye flags derivados de los códigos ICD‑9)
 
 ### Cambios Principales
- ✅ Feature Engineering (3 nuevas características)
-✅ Decodificación ICD-9 y creación de flags binarios (diabetes, circulatory, respiratory) y `comorbidity_score`
+
+- ✅ Decodificación ICD-9 y creación de flags binarios (diabetes, circulatory, respiratory) y `comorbidity_score`
 - ✅ Imputación de valores faltantes en `race` con la moda
 - ✅ Sustitución de valores `?` por `Unknown` en `payer_code` y `medical_specialty`
 - ✅ Creación de variables objetivo binarias
@@ -485,7 +485,7 @@ df_encoded.to_csv("data/diabetes_clean.csv", index=False)
 
 #### `early_readmission` (RECOMENDADA)
 ```
-0 (No readmitido/<30 días):  ~90,600 (89%)
+0 (No readmitido/>30 días):  ~90,600 (89%)
 1 (Readmitido <30 días):     ~11,166 (11%)
 ```
 
