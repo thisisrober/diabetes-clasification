@@ -87,13 +87,6 @@
 
 ---
 
-**Puntos clave para tu parte de la exposición:**
-1. Contexto del problema (2 min)
-2. Estructura y limpieza del dataset (2 min)
-3. Insights principales del EDA (2-3 min)
-
----
-
 ## 👤 Robert: Modelos Clásicos de Clasificación y Optimización
 
 ### **Tarea 2.1: Regresión Logística (Baseline)**
