@@ -19,7 +19,7 @@
 
 ---
 
-## 👤 Albert: Análisis Exploratorio y Preparación de Datos
+## 👤 Linda: Análisis Exploratorio y Preparación de Datos
 
 ### **Tarea 1.1: Carga e Inspección Inicial**
 **Qué hacer:**
@@ -176,7 +176,7 @@
 
 ---
 
-## 👤 Linda: Modelos Avanzados (Ensembles y Comparativa Final)
+## 👤 Albert: Modelos Avanzados (Ensembles y Comparativa Final)
 
 ### **Tarea 3.1: Random Forest y Gradient Boosting**
 **Qué hacer:**
@@ -317,18 +317,18 @@
 
 ## 📊 RESUMEN DE GRÁFICAS POR PERSONA
 
-### Albert (3-4 gráficas):
+### Linda:
 1. Distribución de variable objetivo (desbalance de clases)
 2. Heatmap de correlación
 3. Tiempo hospitalizado vs readmisión
 4. Tasa de readmisión por edad/raza
 
-### Robert (2-3 gráficas):
+### Robert:
 1. Matriz de confusión (regresión logística)
 2. Importancia de features (regresión logística o árbol)
 3. Curvas de aprendizaje (overfitting en árbol)
 
-### Linda (2-3 gráficas):
+### Albert:
 1. Comparación Bagging vs Boosting (diagrama conceptual)
 2. Importancia de features (Random Forest)
 3. Tabla/gráfica comparativa final de todos los modelos
@@ -337,12 +337,12 @@
 
 ## 🎯 (BORRADOR) ESTRUCTURA SUGERIDA DE LA PRESENTACIÓN
 
-1. **Introducción** - Albert
+1. **Introducción** - Linda
    - Contexto del problema
    - Importancia clínica y económica
    - Objetivo del proyecto
 
-2. **Exploración y preparación** - Albert
+2. **Exploración y preparación** - Linda
    - Estructura del dataset
    - Limpieza y transformaciones
    - Insights principales del EDA
@@ -352,31 +352,12 @@
    - Árboles de decisión y overfitting
    - Validación cruzada y optimización
 
-4. **Modelos avanzados** - Linda
+4. **Modelos avanzados** - Albert
    - Random Forest y Gradient Boosting
    - Modelos alternativos
    - Comparativa completa
 
-5. **Conclusiones y recomendaciones** - Linda
+5. **Conclusiones y recomendaciones** - Albert
    - Modelo final seleccionado
    - Justificación de negocio
    - Próximos pasos
-
----
-
-## ✅ CHECKLIST FINAL
-
-### Antes de la presentación:
-- [ ] Notebook limpio y bien comentado
-- [ ] Todas las gráficas guardadas en alta calidad
-- [ ] Tabla comparativa final completa
-- [ ] Modelo final guardado (pickle o joblib)
-- [ ] Presentación de diapositivas preparada
-- [ ] Ensayo de timing (20 min totales)
-
-### Durante la presentación:
-- [ ] Explicar decisiones tomadas, no solo resultados
-- [ ] Justificar por qué NO usamos regresión lineal
-- [ ] Enfatizar la importancia del contexto médico
-- [ ] Mostrar trade-offs, no solo "el mejor modelo"
-- [ ] Ser honestos con limitaciones
